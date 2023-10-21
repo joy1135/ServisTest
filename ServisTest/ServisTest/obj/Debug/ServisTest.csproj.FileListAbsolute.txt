@@ -39,3 +39,4 @@ C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.csproj.
 C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.csproj.CopyComplete
 C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.exe
 C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.pdb
+C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.LoginForm.resources

@@ -40,7 +40,7 @@ namespace ServisTest
             this.regTeach = new System.Windows.Forms.RadioButton();
             this.regStud = new System.Windows.Forms.RadioButton();
             this.regButtom = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.regLogin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -143,6 +143,7 @@ namespace ServisTest
             // regTeach
             // 
             this.regTeach.AutoSize = true;
+            this.regTeach.Checked = true;
             this.regTeach.Cursor = System.Windows.Forms.Cursors.Hand;
             this.regTeach.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.regTeach.ForeColor = System.Drawing.Color.White;
@@ -152,6 +153,7 @@ namespace ServisTest
             this.regTeach.TabIndex = 10;
             this.regTeach.TabStop = true;
             this.regTeach.Text = "Учитель ";
+            this.regTeach.UseMnemonic = false;
             this.regTeach.UseVisualStyleBackColor = true;
             // 
             // regStud
@@ -164,7 +166,6 @@ namespace ServisTest
             this.regStud.Name = "regStud";
             this.regStud.Size = new System.Drawing.Size(97, 28);
             this.regStud.TabIndex = 11;
-            this.regStud.TabStop = true;
             this.regStud.Text = "Ученик ";
             this.regStud.UseVisualStyleBackColor = true;
             // 
@@ -182,17 +183,18 @@ namespace ServisTest
             this.regButtom.UseVisualStyleBackColor = false;
             this.regButtom.Click += new System.EventHandler(this.regButtom_Click);
             // 
-            // label2
+            // regLogin
             // 
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(120)))));
-            this.label2.Location = new System.Drawing.Point(169, 603);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 22);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "УЖЕ ЕСТЬ АККАУНТ?";
+            this.regLogin.AutoSize = true;
+            this.regLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.regLogin.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.regLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(120)))));
+            this.regLogin.Location = new System.Drawing.Point(169, 603);
+            this.regLogin.Name = "regLogin";
+            this.regLogin.Size = new System.Drawing.Size(178, 22);
+            this.regLogin.TabIndex = 13;
+            this.regLogin.Text = "УЖЕ ЕСТЬ АККАУНТ?";
+            this.regLogin.Click += new System.EventHandler(this.label2_Click);
             // 
             // Regist
             // 
@@ -200,7 +202,7 @@ namespace ServisTest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(512, 634);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.regLogin);
             this.Controls.Add(this.regButtom);
             this.Controls.Add(this.regStud);
             this.Controls.Add(this.regTeach);
@@ -230,10 +232,10 @@ namespace ServisTest
         private System.Windows.Forms.TextBox regEmail;
         private System.Windows.Forms.TextBox regPass;
         private System.Windows.Forms.TextBox regRepPass;
+        private System.Windows.Forms.Button regButtom;
+        private System.Windows.Forms.Label regLogin;
         private System.Windows.Forms.RadioButton regTeach;
         private System.Windows.Forms.RadioButton regStud;
-        private System.Windows.Forms.Button regButtom;
-        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -32,11 +32,11 @@ namespace ServisTest
             vCon = new NpgsqlConnection();
             vCon.ConnectionString = vStrConnection;
 
-            if(vCon.State == ConnectionState.Closed)
+            if (vCon.State == ConnectionState.Closed)
             {
                 vCon.Open();
             }
-            
+
         }
 
         public DataTable getdata(string sql)
@@ -56,21 +56,16 @@ namespace ServisTest
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataTable dtgetdata = new DataTable();
-            dtgetdata = getdata("SELECT * FROM \"Teachers\"");
-            dataGridView1.DataSource = dtgetdata;
-        }
+
 
         private void exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void regName_Enter(object sender, EventArgs e)
         {
-            if( regName.Text == "ИМЯ")
+            if (regName.Text == "ИМЯ")
             {
                 regName.Text = "";
             }
@@ -78,7 +73,7 @@ namespace ServisTest
 
         private void regName_Leave(object sender, EventArgs e)
         {
-            if (regName.Text == "") 
+            if (regName.Text == "")
             {
                 regName.Text = "ИМЯ";
             }
@@ -169,11 +164,39 @@ namespace ServisTest
             string name = regName.Text;
             string surname = regSurname.Text;
             string patronymic = regPatronymic.Text;
+            if (regPatronymic.Text == "ОТЧЕСТВО")
+            {
+                patronymic = "";
+            }
             string email = regEmail.Text;
             string password = regPass.Text;
-            DataTable dtgetdata = new DataTable();
-            dtgetdata = getdata($"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
-            dataGridView1.DataSource = dtgetdata;
+            string reppass = regRepPass.Text;
+            if (reppass == password)
+            {
+                if (regTeach.Checked == true)
+                {
+                    DataTable dtgetdata = new DataTable();
+                    dtgetdata = getdata($"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
+
+                }
+                if (regStud.Checked == true)
+                {
+                    DataTable dtgetdata = new DataTable();
+                    dtgetdata = getdata($"INSERT INTO \"Students\" (name , surname, patronymic, email, password) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
+                }
+            }
+            else 
+            {
+                MessageBox.Show("ПАРОЛИ НЕ СОВПОДАЮТ!!!");
+            }
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
     }
 }
