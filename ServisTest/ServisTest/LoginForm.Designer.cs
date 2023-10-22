@@ -142,6 +142,7 @@ namespace ServisTest
             this.logButtom.TabIndex = 15;
             this.logButtom.Text = "ВХОД";
             this.logButtom.UseVisualStyleBackColor = false;
+            this.logButtom.Click += new System.EventHandler(this.logButtom_Click);
             // 
             // LoginForm
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using ServisTest.Class;
 
 namespace ServisTest
 {
@@ -24,33 +25,8 @@ namespace ServisTest
             regPass.Text = "ПАРОЛЬ";
             regRepPass.Text = "ПОВТОРИТЕ ПАРОЛЬ";
         }
-        string vStrConnection = "Server=localhost; port=5432; user id=postgres; password=root ; database=ServTest2 ;";
-        NpgsqlConnection vCon;
-        NpgsqlCommand vCmd;
-        private void connection()
-        {
-            vCon = new NpgsqlConnection();
-            vCon.ConnectionString = vStrConnection;
+        
 
-            if (vCon.State == ConnectionState.Closed)
-            {
-                vCon.Open();
-            }
-
-        }
-
-        public DataTable getdata(string sql)
-        {
-            DataTable dt = new DataTable();
-            connection();
-            vCmd = new NpgsqlCommand();
-            vCmd.Connection = vCon;
-            vCmd.CommandText = sql;
-
-            NpgsqlDataReader dr = vCmd.ExecuteReader();
-            dt.Load(dr);
-            return dt;
-        }
         private void Regist_Load(object sender, EventArgs e)
         {
 
@@ -158,7 +134,7 @@ namespace ServisTest
                 regRepPass.Text = "ПОВТОРИТЕ ПАРОЛЬ";
             }
         }
-
+        ConnectClass conclass = new ConnectClass();
         private void regButtom_Click(object sender, EventArgs e)
         {
             string name = regName.Text;
@@ -176,13 +152,15 @@ namespace ServisTest
                 if (regTeach.Checked == true)
                 {
                     DataTable dtgetdata = new DataTable();
-                    dtgetdata = getdata($"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
+                   
+                    dtgetdata = conclass.getdata($"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
 
                 }
                 if (regStud.Checked == true)
                 {
                     DataTable dtgetdata = new DataTable();
-                    dtgetdata = getdata($"INSERT INTO \"Students\" (name , surname, patronymic, email, password) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
+                   
+                    dtgetdata = conclass.getdata($"INSERT INTO \"Students\" (name , surname, patronymic, email, password) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
                 }
             }
             else 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
+using ServisTest.Class;
 
 namespace ServisTest
 {
@@ -18,7 +20,7 @@ namespace ServisTest
             logEmail.Text = "ЕМАИЛ";
             logPass.Text = "ПАРОЛЬ";
         }
-
+       
         private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -61,6 +63,42 @@ namespace ServisTest
             this.Hide();
             Regist regist = new Regist();
             regist.Show();
+        }
+        ConnectClass conclass = new ConnectClass();
+        private void logButtom_Click(object sender, EventArgs e)
+        {
+            string email = logEmail.Text;
+            string password = logPass.Text;
+            DataTable dtgetdata = new DataTable();
+            if(logTeach.Checked == true)
+            {
+                dtgetdata = conclass.getdata($"SELECT * FROM \"Teachers\" WHERE email_t = '{email}' AND password_t = '{password}'");
+                if (dtgetdata.Rows.Count > 0)
+                {
+                    this.Hide();
+                    TeachForm teachForm = new TeachForm();
+                    teachForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
+                }
+            }
+            if (logStud.Checked == true) 
+            {
+                dtgetdata = conclass.getdata($"SELECT * FROM \"Students\" WHERE email = '{email}' AND password = '{password}'");
+                if (dtgetdata.Rows.Count > 0)
+                {
+                    this.Hide();
+                    StudForm studForm = new StudForm();
+                    studForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
+                }
+            }
+                
         }
     }
 }
