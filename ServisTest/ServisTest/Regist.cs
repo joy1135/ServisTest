@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using ServisTest.Class;
+using BCrypt;
 
 namespace ServisTest
 {
@@ -145,9 +146,10 @@ namespace ServisTest
                 patronymic = "";
             }
             string email = regEmail.Text;
-            string password = regPass.Text;
+            string password = BCrypt.Net.BCrypt.HashPassword(regPass.Text);
             string reppass = regRepPass.Text;
-            if (reppass == password)
+            bool pass = BCrypt.Net.BCrypt.Verify(reppass, password);
+            if (pass == true)
             {
                 if (regTeach.Checked == true)
                 {

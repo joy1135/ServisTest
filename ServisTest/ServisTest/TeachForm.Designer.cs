@@ -30,7 +30,7 @@ namespace ServisTest
         private void InitializeComponent()
         {
             this.exit = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.nameteach = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // exit
@@ -46,14 +46,16 @@ namespace ServisTest
             this.exit.Text = "X";
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
-            // label1
+            // nameteach
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(258, 129);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "t";
+            this.nameteach.AutoSize = true;
+            this.nameteach.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameteach.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nameteach.Location = new System.Drawing.Point(61, 46);
+            this.nameteach.Name = "nameteach";
+            this.nameteach.Size = new System.Drawing.Size(116, 25);
+            this.nameteach.TabIndex = 6;
+            this.nameteach.Text = "УЧИТЕЛЬ ";
             // 
             // TeachForm
             // 
@@ -61,7 +63,7 @@ namespace ServisTest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(512, 634);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nameteach);
             this.Controls.Add(this.exit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TeachForm";
@@ -74,6 +76,6 @@ namespace ServisTest
         #endregion
 
         private System.Windows.Forms.Label exit;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label nameteach;
     }
 }

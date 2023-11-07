@@ -42,3 +42,5 @@ C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.pdb
 C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.LoginForm.resources
 C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.TeachForm.resources
 C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.StudForm.resources
+C:\Users\HOME\Desktop\project\ServisTest\ServisTest\bin\Debug\BCrypt.Net-Next.dll
+C:\Users\HOME\Desktop\project\ServisTest\ServisTest\bin\Debug\BCrypt.Net-Next.xml

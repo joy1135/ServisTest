@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using ServisTest.Class;
+using BCrypt;
 
 namespace ServisTest
 {
