@@ -10,13 +10,13 @@ namespace ServisTest.Class
     class ConnectClass
     {
         string vStrConnection = "Server=localhost; port=5432; user id=postgres; password=root ; database=ServTest2 ;";
-        NpgsqlConnection vCon;
+        public NpgsqlConnection vCon;
         NpgsqlCommand vCmd;
-        private void connection()
+        public void connection()
         {
             vCon = new NpgsqlConnection();
             vCon.ConnectionString = vStrConnection;
-
+            
             if (vCon.State == ConnectionState.Closed)
             {
                 vCon.Open();
@@ -35,6 +35,26 @@ namespace ServisTest.Class
             NpgsqlDataReader dr = vCmd.ExecuteReader();
             dt.Load(dr);
             return dt;
+        }
+        public String getstring(NpgsqlCommand sql)
+        {
+            DataTable dt = new DataTable();
+            connection();
+            vCmd = sql;
+            vCmd.Connection = vCon;
+
+            NpgsqlDataReader dr = vCmd.ExecuteReader();
+            if (dr.HasRows) 
+            {
+                while (dr.Read())
+                {
+                    var a = dr.GetValue(0).ToString();
+
+                    return a;
+                }
+            }
+            return "";
+            
         }
     }
 }

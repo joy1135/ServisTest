@@ -18,9 +18,7 @@ namespace ServisTest
         public TeachForm()
         {
             InitializeComponent();
-            DataTable dtgetdata = new DataTable();
-            dtgetdata = conclass.getdata($"SELECT name_t FROM \"Teachers\" WHERE name_t = 'a'");
-            
+           
         }
 
         

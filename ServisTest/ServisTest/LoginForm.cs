@@ -70,11 +70,23 @@ namespace ServisTest
         {
             string email = logEmail.Text;
             string password = logPass.Text;
-            DataTable dtgetdata = new DataTable();
-            if(logTeach.Checked == true)
+            string sql_select_password = $"SELECT password_t FROM \"Teachers\" WHERE email_t = @email";
+            NpgsqlCommand cmd_select_password = new NpgsqlCommand(sql_select_password, conclass.vCon);
+            cmd_select_password.Parameters.Add("@password", NpgsqlTypes.NpgsqlDbType.Varchar).Value = password;
+            cmd_select_password.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
+            string check_password = conclass.getstring(cmd_select_password);
+            if (check_password == "")
             {
-                dtgetdata = conclass.getdata($"SELECT * FROM \"Teachers\" WHERE email_t = '{email}' AND password_t = '{password}'");
-                if (dtgetdata.Rows.Count > 0)
+                MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
+                return ;
+            }
+            
+             bool pass = BCrypt.Net.BCrypt.Verify(password, check_password);
+           
+            
+            if (logTeach.Checked == true)
+            {
+                if (pass == true)
                 {
                     this.Hide();
                     TeachForm teachForm = new TeachForm();
@@ -84,11 +96,11 @@ namespace ServisTest
                 {
                     MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
                 }
+
             }
             if (logStud.Checked == true) 
             {
-                dtgetdata = conclass.getdata($"SELECT * FROM \"Students\" WHERE email = '{email}' AND password = '{password}'");
-                if (dtgetdata.Rows.Count > 0)
+                if (pass == true)
                 {
                     this.Hide();
                     StudForm studForm = new StudForm();

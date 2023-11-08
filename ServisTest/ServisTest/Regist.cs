@@ -106,17 +106,23 @@ namespace ServisTest
 
         private void regPass_Enter(object sender, EventArgs e)
         {
+           
+
             if (regPass.Text == "ПАРОЛЬ")
             {
                 regPass.Text = "";
+            
             }
         }
 
         private void regPass_Leave(object sender, EventArgs e)
-        {
+        {   
+            
             if (regPass.Text == "")
             {
                 regPass.Text = "ПАРОЛЬ";
+              
+              
             }
         }
 
@@ -138,31 +144,71 @@ namespace ServisTest
         ConnectClass conclass = new ConnectClass();
         private void regButtom_Click(object sender, EventArgs e)
         {
+            conclass.connection();
             string name = regName.Text;
             string surname = regSurname.Text;
             string patronymic = regPatronymic.Text;
             if (regPatronymic.Text == "ОТЧЕСТВО")
-            {
-                patronymic = "";
-            }
+                        {
+                            patronymic = "";
+                        }
             string email = regEmail.Text;
             string password = BCrypt.Net.BCrypt.HashPassword(regPass.Text);
             string reppass = regRepPass.Text;
             bool pass = BCrypt.Net.BCrypt.Verify(reppass, password);
+            string sql_insert_teach = $"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( @name, @surname, @patronymic, @email, @password)";
+            string sql_insert_stud =  $"INSERT INTO \"Students\" (name , surname, patronymic, email, password) VALUES( @name, @surname, @patronymic, @email, @password)";
+            NpgsqlCommand cmd_insert = new NpgsqlCommand(sql_insert_teach, conclass.vCon);
             if (pass == true)
             {
                 if (regTeach.Checked == true)
                 {
-                    DataTable dtgetdata = new DataTable();
-                   
-                    dtgetdata = conclass.getdata($"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
+                    cmd_insert = new NpgsqlCommand(sql_insert_teach, conclass.vCon);
 
                 }
                 if (regStud.Checked == true)
                 {
-                    DataTable dtgetdata = new DataTable();
-                   
-                    dtgetdata = conclass.getdata($"INSERT INTO \"Students\" (name , surname, patronymic, email, password) VALUES( '{name}', '{surname}', '{patronymic}', '{email}', '{password}')");
+                    cmd_insert = new NpgsqlCommand(sql_insert_stud, conclass.vCon);
+                }
+            }   
+            cmd_insert.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Varchar).Value = name;
+            cmd_insert.Parameters.Add("@surname", NpgsqlTypes.NpgsqlDbType.Varchar).Value = surname;
+            cmd_insert.Parameters.Add("@patronymic", NpgsqlTypes.NpgsqlDbType.Varchar).Value = patronymic;
+            cmd_insert.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
+            cmd_insert.Parameters.Add("@password", NpgsqlTypes.NpgsqlDbType.Varchar).Value = password;
+            
+            if (pass == true)
+            {
+                if (regTeach.Checked == true)
+                {
+                    try
+                    {
+                        cmd_insert.ExecuteReader();
+                        this.Hide();
+                        TeachForm teachForm = new TeachForm();
+                        teachForm.Show();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Пользователь уже существует");
+                        return ;
+                    }
+
+                }
+                if (regStud.Checked == true)
+                {
+                    try
+                    {
+                        cmd_insert.ExecuteReader();
+                        this.Hide();
+                        StudForm studForm = new StudForm();
+                        studForm.Show();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Пользователь уже существует");
+                        return;
+                    }
                 }
             }
             else 

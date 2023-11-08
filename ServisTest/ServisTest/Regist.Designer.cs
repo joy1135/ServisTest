@@ -125,6 +125,7 @@ namespace ServisTest
             this.regPass.Name = "regPass";
             this.regPass.Size = new System.Drawing.Size(381, 39);
             this.regPass.TabIndex = 8;
+            this.regPass.UseSystemPasswordChar = true;
             this.regPass.Enter += new System.EventHandler(this.regPass_Enter);
             this.regPass.Leave += new System.EventHandler(this.regPass_Leave);
             // 
