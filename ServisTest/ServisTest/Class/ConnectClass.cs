@@ -36,7 +36,7 @@ namespace ServisTest.Class
             dt.Load(dr);
             return dt;
         }
-        public String getstring(NpgsqlCommand sql)
+        public String getpassword(NpgsqlCommand sql)
         {
             DataTable dt = new DataTable();
             connection();
@@ -49,12 +49,36 @@ namespace ServisTest.Class
                 while (dr.Read())
                 {
                     var a = dr.GetValue(0).ToString();
-
+                   
                     return a;
                 }
             }
             return "";
             
         }
+        public String getfio(NpgsqlCommand sql)
+        {
+            DataTable dt = new DataTable();
+            connection();
+            vCmd = sql;
+            vCmd.Connection = vCon;
+
+            NpgsqlDataReader dr = vCmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    var a = dr.GetValue(0).ToString();
+                    var b = dr.GetValue(1).ToString();
+                    var c = dr.GetValue(2).ToString();
+                    var fio = a +' ' +  b +' '+ c;
+                    return fio;
+                }
+            }
+            return "";
+
+        }
+
+        
     }
 }

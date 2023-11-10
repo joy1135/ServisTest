@@ -20,6 +20,7 @@ namespace ServisTest
             InitializeComponent();
             logEmail.Text = "ЕМАИЛ";
             logPass.Text = "ПАРОЛЬ";
+            
         }
        
         private void exit_Click(object sender, EventArgs e)
@@ -65,16 +66,17 @@ namespace ServisTest
             Regist regist = new Regist();
             regist.Show();
         }
-        ConnectClass conclass = new ConnectClass();
+        ConnectClass conclass = new ConnectClass();  
         private void logButtom_Click(object sender, EventArgs e)
         {
             string email = logEmail.Text;
             string password = logPass.Text;
+            Infoclass.email = logEmail.Text;
             string sql_select_password = $"SELECT password_t FROM \"Teachers\" WHERE email_t = @email";
             NpgsqlCommand cmd_select_password = new NpgsqlCommand(sql_select_password, conclass.vCon);
             cmd_select_password.Parameters.Add("@password", NpgsqlTypes.NpgsqlDbType.Varchar).Value = password;
             cmd_select_password.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
-            string check_password = conclass.getstring(cmd_select_password);
+            string check_password = conclass.getpassword(cmd_select_password);
             if (check_password == "")
             {
                 MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
