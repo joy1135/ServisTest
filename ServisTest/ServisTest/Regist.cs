@@ -184,9 +184,7 @@ namespace ServisTest
                     try
                     {
                         cmd_insert.ExecuteReader();
-                        this.Hide();
-                        TeachForm teachForm = new TeachForm();
-                        teachForm.Show();
+                        
                     }
                     catch
                     {
@@ -200,9 +198,7 @@ namespace ServisTest
                     try
                     {
                         cmd_insert.ExecuteReader();
-                        this.Hide();
-                        StudForm studForm = new StudForm();
-                        studForm.Show();
+                        
                     }
                     catch
                     {

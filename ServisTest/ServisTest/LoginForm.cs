@@ -90,6 +90,12 @@ namespace ServisTest
             {
                 if (pass == true)
                 {
+                    
+                    string sql_id = $"SELECT id_teacher FROM \"Teachers\" WHERE email_t = @email";
+                    NpgsqlCommand cmd_id = new NpgsqlCommand(sql_id, conclass.vCon);
+                    cmd_id.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
+                    Infoclass.id = conclass.getpassword(cmd_id);
+                    MessageBox.Show(Infoclass.id);
                     this.Hide();
                     TeachForm teachForm = new TeachForm();
                     teachForm.Show();

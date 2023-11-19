@@ -32,8 +32,24 @@ namespace ServisTest.Class
             vCmd.Connection = vCon;
             vCmd.CommandText = sql;
 
-            NpgsqlDataReader dr = vCmd.ExecuteReader();
-            dt.Load(dr);
+            using (NpgsqlDataReader dr = vCmd.ExecuteReader())
+            {
+                dt.Load(dr);
+            }
+            return dt;
+        }
+
+        public DataTable getmultidata(NpgsqlCommand cmd)
+        {
+            DataTable dt = new DataTable();
+            connection();
+            cmd.Connection = vCon;
+
+            using (NpgsqlDataReader dr = cmd.ExecuteReader())
+            {
+                dt.Load(dr);
+            }
+
             return dt;
         }
         public String getpassword(NpgsqlCommand sql)

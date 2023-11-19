@@ -83,5 +83,26 @@ namespace ServisTest
             dg_result.DataSource = conclass.getdata(cmd_res.CommandText);
 
         }
+
+        private void test_dt_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(Infoclass.id);
+            string sql_res = $"SELECT name FROM \"Tests\" JOIN \"Teachers\" AS ts ON  \"Tests\".id_teachers=ts.id_teacher    WHERE id_teacher = @id";
+
+            using (NpgsqlCommand cmd_res = new NpgsqlCommand(sql_res, conclass.vCon))
+            {
+                cmd_res.Parameters.Add("@id", NpgsqlTypes.NpgsqlDbType.Integer).Value = id;
+                
+                
+                DataTable dt = conclass.getmultidata(cmd_res);
+                dg_result.Visible = true;
+                dg_result.DataSource = dt;
+            }
+        }
+
+        private void newtest_bt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

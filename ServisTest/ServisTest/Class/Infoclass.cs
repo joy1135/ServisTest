@@ -9,5 +9,6 @@ namespace ServisTest.Class
     static class Infoclass
     {
         public static string email;
+        public static string id;
     }
 }
