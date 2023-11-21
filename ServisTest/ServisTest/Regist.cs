@@ -25,6 +25,7 @@ namespace ServisTest
             regEmail.Text = "ЕМАИЛ";
             regPass.Text = "ПАРОЛЬ";
             regRepPass.Text = "ПОВТОРИТЕ ПАРОЛЬ";
+            
         }
         
 
@@ -32,7 +33,19 @@ namespace ServisTest
         {
 
         }
-
+        Point lastPoint;
+        private void Regist_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+        private void Regist_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
 
 
         private void exit_Click(object sender, EventArgs e)
@@ -45,6 +58,7 @@ namespace ServisTest
             if (regName.Text == "ИМЯ")
             {
                 regName.Text = "";
+                
             }
         }
 
@@ -53,6 +67,7 @@ namespace ServisTest
             if (regName.Text == "")
             {
                 regName.Text = "ИМЯ";
+                
             }
         }
 
@@ -106,13 +121,15 @@ namespace ServisTest
 
         private void regPass_Enter(object sender, EventArgs e)
         {
-           
-
+  
             if (regPass.Text == "ПАРОЛЬ")
             {
                 regPass.Text = "";
-            
+                
+
             }
+           
+            
         }
 
         private void regPass_Leave(object sender, EventArgs e)
@@ -121,9 +138,9 @@ namespace ServisTest
             if (regPass.Text == "")
             {
                 regPass.Text = "ПАРОЛЬ";
-              
-              
+                
             }
+            
         }
 
         private void regRepPass_Enter(object sender, EventArgs e)
@@ -219,6 +236,23 @@ namespace ServisTest
             this.Hide();
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
+        }
+
+        private void checkpass_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (checkpass.Checked == false)
+            {
+                regPass.UseSystemPasswordChar = true;
+                regRepPass.UseSystemPasswordChar = true;
+                regRepPass.PasswordChar = '*';
+                regPass.PasswordChar = '*';
+            }
+            else
+            {
+                regPass.UseSystemPasswordChar = false;
+                regRepPass.UseSystemPasswordChar = false;
+
+            }
         }
     }
 }

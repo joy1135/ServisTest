@@ -22,7 +22,22 @@ namespace ServisTest
             logPass.Text = "ПАРОЛЬ";
             
         }
-       
+        
+        Point lastPoint;
+        private void LoginForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void LoginForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
         private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -95,7 +110,6 @@ namespace ServisTest
                     NpgsqlCommand cmd_id = new NpgsqlCommand(sql_id, conclass.vCon);
                     cmd_id.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
                     Infoclass.id = conclass.getpassword(cmd_id);
-                    MessageBox.Show(Infoclass.id);
                     this.Hide();
                     TeachForm teachForm = new TeachForm();
                     teachForm.Show();
@@ -120,6 +134,23 @@ namespace ServisTest
                 }
             }
                 
+        }
+
+        private void checkpass_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (checkpass.Checked == false)
+            {
+                logPass.UseSystemPasswordChar = true;
+
+
+                logPass.PasswordChar = '*';
+            }
+            else
+            {
+                logPass.UseSystemPasswordChar = false;
+
+
+            }
         }
     }
 }

@@ -41,6 +41,7 @@ namespace ServisTest
             this.regStud = new System.Windows.Forms.RadioButton();
             this.regButtom = new System.Windows.Forms.Button();
             this.regLogin = new System.Windows.Forms.Label();
+            this.checkpass = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -125,7 +126,6 @@ namespace ServisTest
             this.regPass.Name = "regPass";
             this.regPass.Size = new System.Drawing.Size(381, 39);
             this.regPass.TabIndex = 8;
-            this.regPass.UseSystemPasswordChar = true;
             this.regPass.Enter += new System.EventHandler(this.regPass_Enter);
             this.regPass.Leave += new System.EventHandler(this.regPass_Leave);
             // 
@@ -197,12 +197,26 @@ namespace ServisTest
             this.regLogin.Text = "УЖЕ ЕСТЬ АККАУНТ?";
             this.regLogin.Click += new System.EventHandler(this.label2_Click);
             // 
+            // checkpass
+            // 
+            this.checkpass.AutoSize = true;
+            this.checkpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkpass.ForeColor = System.Drawing.Color.White;
+            this.checkpass.Location = new System.Drawing.Point(356, 603);
+            this.checkpass.Name = "checkpass";
+            this.checkpass.Size = new System.Drawing.Size(144, 24);
+            this.checkpass.TabIndex = 14;
+            this.checkpass.Text = "Скрыть пароль";
+            this.checkpass.UseVisualStyleBackColor = true;
+            this.checkpass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.checkpass_MouseClick);
+            // 
             // Regist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(512, 634);
+            this.Controls.Add(this.checkpass);
             this.Controls.Add(this.regLogin);
             this.Controls.Add(this.regButtom);
             this.Controls.Add(this.regStud);
@@ -219,6 +233,8 @@ namespace ServisTest
             this.Name = "Regist";
             this.Text = "ServisTest";
             this.Load += new System.EventHandler(this.Regist_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Regist_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Regist_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,6 +253,7 @@ namespace ServisTest
         private System.Windows.Forms.Label regLogin;
         private System.Windows.Forms.RadioButton regTeach;
         private System.Windows.Forms.RadioButton regStud;
+        private System.Windows.Forms.CheckBox checkpass;
     }
 }
 

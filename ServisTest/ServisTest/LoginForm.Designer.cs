@@ -37,6 +37,7 @@ namespace ServisTest
             this.logTeach = new System.Windows.Forms.RadioButton();
             this.logRegit = new System.Windows.Forms.Label();
             this.logButtom = new System.Windows.Forms.Button();
+            this.checkpass = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // exit
@@ -144,12 +145,26 @@ namespace ServisTest
             this.logButtom.UseVisualStyleBackColor = false;
             this.logButtom.Click += new System.EventHandler(this.logButtom_Click);
             // 
+            // checkpass
+            // 
+            this.checkpass.AutoSize = true;
+            this.checkpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkpass.ForeColor = System.Drawing.Color.White;
+            this.checkpass.Location = new System.Drawing.Point(356, 588);
+            this.checkpass.Name = "checkpass";
+            this.checkpass.Size = new System.Drawing.Size(144, 24);
+            this.checkpass.TabIndex = 16;
+            this.checkpass.Text = "Скрыть пароль";
+            this.checkpass.UseVisualStyleBackColor = true;
+            this.checkpass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.checkpass_MouseClick);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(512, 634);
+            this.Controls.Add(this.checkpass);
             this.Controls.Add(this.logButtom);
             this.Controls.Add(this.logRegit);
             this.Controls.Add(this.logStud);
@@ -161,6 +176,8 @@ namespace ServisTest
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +193,6 @@ namespace ServisTest
         private System.Windows.Forms.RadioButton logTeach;
         private System.Windows.Forms.Label logRegit;
         private System.Windows.Forms.Button logButtom;
+        private System.Windows.Forms.CheckBox checkpass;
     }
 }

@@ -28,8 +28,23 @@ namespace ServisTest
             
 
         }
+        Point lastPoint;
 
-        
+        private void TeachForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void TeachForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+
 
         private void exit_Click(object sender, EventArgs e)
         {
@@ -74,14 +89,21 @@ namespace ServisTest
             string sql_id = $"SELECT id FROM \"Tests\" WHERE name = @name";
             NpgsqlCommand cmd_id = new NpgsqlCommand(sql_id, conclass.vCon);
             cmd_id.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Varchar).Value = name_t;
-            string id = conclass.getpassword(cmd_id);
-           
-            string sql_res = $"SELECT surname AS фамилия , \"Students\".name AS имя, result AS результат FROM \"Results\" JOIN \"Students\" ON \"Results\".id_stud = \"Students\".id_student JOIN \"Tests\" ON \"Results\".id_test=\"Tests\".id WHERE \"Tests\".id = @id";
-            NpgsqlCommand cmd_res = new NpgsqlCommand(sql_res, conclass.vCon);
-            cmd_res.Parameters.Add("@id", NpgsqlTypes.NpgsqlDbType.Varchar).Value = id;
-            dg_result.Visible = true;
-            dg_result.DataSource = conclass.getdata(cmd_res.CommandText);
+            int id = Convert.ToInt32(conclass.getpassword(cmd_id));
 
+            string sql_res = $"SELECT surname AS фамилия , \"Students\".name AS имя, result AS результат FROM \"Results\" JOIN \"Students\" ON \"Results\".id_stud = \"Students\".id_student JOIN \"Tests\" ON \"Results\".id_test=\"Tests\".id WHERE \"Tests\".id = @id";
+            
+            
+            
+            using (NpgsqlCommand cmd_res = new NpgsqlCommand(sql_res, conclass.vCon))
+            {
+                cmd_res.Parameters.Add("@id", NpgsqlTypes.NpgsqlDbType.Integer).Value = id;
+
+
+                DataTable dt = conclass.getmultidata(cmd_res);
+                dg_result.Visible = true;
+                dg_result.DataSource = dt;
+            }
         }
 
         private void test_dt_Click(object sender, EventArgs e)
@@ -102,7 +124,11 @@ namespace ServisTest
 
         private void newtest_bt_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            CreateTests createTests = new CreateTests();
+            createTests.Show();
         }
+
+        
     }
 }

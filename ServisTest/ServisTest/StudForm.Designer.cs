@@ -30,7 +30,7 @@ namespace ServisTest
         private void InitializeComponent()
         {
             this.exit = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.namestud = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // exit
@@ -46,16 +46,16 @@ namespace ServisTest
             this.exit.Text = "X";
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
-            // label1
+            // namestud
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(240, 205);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 25);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "СТУДЕНТ";
+            this.namestud.AutoSize = true;
+            this.namestud.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.namestud.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.namestud.Location = new System.Drawing.Point(12, 15);
+            this.namestud.Name = "namestud";
+            this.namestud.Size = new System.Drawing.Size(61, 25);
+            this.namestud.TabIndex = 7;
+            this.namestud.Text = "ФИО";
             // 
             // StudForm
             // 
@@ -63,7 +63,7 @@ namespace ServisTest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(512, 634);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.namestud);
             this.Controls.Add(this.exit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudForm";
@@ -76,6 +76,6 @@ namespace ServisTest
         #endregion
 
         private System.Windows.Forms.Label exit;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label namestud;
     }
 }
