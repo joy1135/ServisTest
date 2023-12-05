@@ -61,45 +61,58 @@ namespace ServisTest
                 MessageBox.Show("ВВЕДИТЕ ЧИСЛО!!!");
                 return; 
             }
-            
-            string sql_insert_test = $"INSERT INTO \"Tests\" (name , id_teachers, max_score) VALUES( @name, @id_teachers, @max_score)";
-            NpgsqlCommand cmd_insert_test = new NpgsqlCommand(sql_insert_test, conclass.vCon);
-            cmd_insert_test.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Varchar).Value = Convert.ToString(Test.nametest);
-            cmd_insert_test.Parameters.Add("@id_teachers", NpgsqlTypes.NpgsqlDbType.Bigint).Value = Convert.ToInt32(Infoclass.id);
-            cmd_insert_test.Parameters.Add("@max_score", NpgsqlTypes.NpgsqlDbType.Integer).Value = Convert.ToInt32(Test.c_question);
-            try
+            if (Test.c_question > 0)
             {
-                cmd_insert_test.ExecuteReader();
+
+
+
+                string sql_insert_test = $"INSERT INTO \"Tests\" (name , id_teachers, max_score) VALUES( @name, @id_teachers, @max_score)";
+                NpgsqlCommand cmd_insert_test = new NpgsqlCommand(sql_insert_test, conclass.vCon);
+                cmd_insert_test.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Varchar).Value = Convert.ToString(Test.nametest);
+                cmd_insert_test.Parameters.Add("@id_teachers", NpgsqlTypes.NpgsqlDbType.Bigint).Value = Convert.ToInt32(Infoclass.id);
+                cmd_insert_test.Parameters.Add("@max_score", NpgsqlTypes.NpgsqlDbType.Integer).Value = Convert.ToInt32(Test.c_question);
+                if(Convert.ToString(Test.nametest) == "")
+                {
+                    MessageBox.Show("ВВЕДИТЕ НАЗВАНИЕ ТЕСТА");
+                    return;
+                }
+                try
+                {
+                    cmd_insert_test.ExecuteReader();
+                }
+                catch
+                {
+                    MessageBox.Show("Название уже используется");
+                    return;
+                }
+                MessageBox.Show("Название успешно добавлено");
+                add_name.Visible = false;
+                name_test.Visible = false;
+                label6.Visible = false;
+                count_question.Visible = false;
+                label2.Visible = false;
+                label3.Visible = true;
+                question_tb.Visible = true;
+                answer1.Visible = true;
+                answer2.Visible = true;
+                answer3.Visible = true;
+                answer4.Visible = true;
+                correct1.Visible = true;
+                correct2.Visible = true;
+                correct3.Visible = true;
+                correct4.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                correct1.Checked = false;
+                correct2.Checked = false;
+                correct3.Checked = false;
+                correct4.Checked = false;
+                add_question.Visible = true;
             }
-            catch
+            else
             {
-                MessageBox.Show("Название уже используется");
-                return;
+                MessageBox.Show("ВВЕДИТЕ ПОЛОЖИТЕЛЬНОЕ ЧИСЛО");
             }
-            MessageBox.Show("Название успешно добавлено");
-            add_name.Visible = false;
-            name_test.Visible = false;
-            label6.Visible = false;
-            count_question.Visible = false;
-            label2.Visible = false;
-            label3.Visible = true;
-            question_tb.Visible = true;
-            answer1.Visible = true;
-            answer2.Visible = true;
-            answer3.Visible = true;
-            answer4.Visible = true;
-            correct1.Visible = true;
-            correct2.Visible = true;
-            correct3.Visible = true;
-            correct4.Visible = true;
-            label4.Visible = true;
-            label5.Visible = true;
-            correct1.Checked = false;
-            correct2.Checked = false;
-            correct3.Checked = false;
-            correct4.Checked = false;
-            add_question.Visible = true;
-           
         }
 
         private void add_question_Click(object sender, EventArgs e)
@@ -169,8 +182,10 @@ namespace ServisTest
             }
            
         }
-       
-        
-        
+
+        private void count_question_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

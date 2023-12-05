@@ -9,7 +9,7 @@ namespace ServisTest.Class
 {
     class ConnectClass
     {
-        string vStrConnection = "Server=localhost; port=5432; user id=postgres; password=root ; database=ServTest2 ;";
+        string vStrConnection = "Server=localhost; port=5432; user id=postgres; password=Kira3004! ; database=ServTest2 ;";
         public NpgsqlConnection vCon;
         NpgsqlCommand vCmd;
         public void connection()

@@ -105,7 +105,7 @@ namespace ServisTest
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(49, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(402, 32);
+            this.label2.Size = new System.Drawing.Size(401, 32);
             this.label2.TabIndex = 11;
             this.label2.Text = "ВВЕДИТЕ НАЗВАНИЕ ТЕСТА";
             // 
@@ -140,7 +140,7 @@ namespace ServisTest
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(118, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(272, 32);
+            this.label3.Size = new System.Drawing.Size(271, 32);
             this.label3.TabIndex = 14;
             this.label3.Text = "ВВЕДИТЕ ВОПРОС";
             this.label3.Visible = false;
@@ -274,7 +274,7 @@ namespace ServisTest
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(9, 190);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(510, 32);
+            this.label6.Size = new System.Drawing.Size(509, 32);
             this.label6.TabIndex = 27;
             this.label6.Text = "ВВЕДИТЕ КОЛИЧЕСТВО ВОПРОСОВ";
             // 
@@ -286,6 +286,7 @@ namespace ServisTest
             this.count_question.Name = "count_question";
             this.count_question.Size = new System.Drawing.Size(458, 31);
             this.count_question.TabIndex = 26;
+            this.count_question.TextChanged += new System.EventHandler(this.count_question_TextChanged);
             // 
             // CreateTests
             // 

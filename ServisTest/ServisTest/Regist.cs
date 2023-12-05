@@ -175,7 +175,7 @@ namespace ServisTest
             bool pass = BCrypt.Net.BCrypt.Verify(reppass, password);
             string sql_insert_teach = $"INSERT INTO \"Teachers\" (name_t , surname_t, patronymic_t, email_t, password_t) VALUES( @name, @surname, @patronymic, @email, @password)";
             string sql_insert_stud =  $"INSERT INTO \"Students\" (name , surname, patronymic, email, password) VALUES( @name, @surname, @patronymic, @email, @password)";
-            NpgsqlCommand cmd_insert = new NpgsqlCommand(sql_insert_teach, conclass.vCon);
+            NpgsqlCommand cmd_insert = new NpgsqlCommand(sql_insert_stud, conclass.vCon);
             if (pass == true)
             {
                 if (regTeach.Checked == true)
@@ -201,7 +201,8 @@ namespace ServisTest
                     try
                     {
                         cmd_insert.ExecuteReader();
-                        
+                        MessageBox.Show("Регистрация прошла успешно");
+
                     }
                     catch
                     {
@@ -215,6 +216,7 @@ namespace ServisTest
                     try
                     {
                         cmd_insert.ExecuteReader();
+                        MessageBox.Show("Регистрация прошла успешно");
                         
                     }
                     catch
