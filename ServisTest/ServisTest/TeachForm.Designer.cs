@@ -42,6 +42,7 @@ namespace ServisTest
             this.dg_result = new System.Windows.Forms.DataGridView();
             this.test_dt = new System.Windows.Forms.Button();
             this.newtest_bt = new System.Windows.Forms.Button();
+            this.back = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_result)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@ namespace ServisTest
             this.nameteach.AutoSize = true;
             this.nameteach.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameteach.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.nameteach.Location = new System.Drawing.Point(12, 9);
+            this.nameteach.Location = new System.Drawing.Point(12, 57);
             this.nameteach.Name = "nameteach";
             this.nameteach.Size = new System.Drawing.Size(61, 25);
             this.nameteach.TabIndex = 6;
@@ -75,16 +76,16 @@ namespace ServisTest
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 159);
+            this.label1.Location = new System.Drawing.Point(15, 206);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 32);
+            this.label1.Size = new System.Drawing.Size(222, 32);
             this.label1.TabIndex = 7;
             this.label1.Text = "ПОИСК ТЕСТА ";
             // 
             // poisk
             // 
             this.poisk.Font = new System.Drawing.Font("Lucida Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poisk.Location = new System.Drawing.Point(20, 202);
+            this.poisk.Location = new System.Drawing.Point(23, 249);
             this.poisk.Multiline = true;
             this.poisk.Name = "poisk";
             this.poisk.Size = new System.Drawing.Size(288, 31);
@@ -95,7 +96,7 @@ namespace ServisTest
             this.name.AutoSize = true;
             this.name.Font = new System.Drawing.Font("Lucida Sans", 18F);
             this.name.ForeColor = System.Drawing.Color.White;
-            this.name.Location = new System.Drawing.Point(34, 260);
+            this.name.Location = new System.Drawing.Point(37, 307);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(79, 27);
             this.name.TabIndex = 9;
@@ -107,7 +108,7 @@ namespace ServisTest
             this.res_buttom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
             this.res_buttom.Cursor = System.Windows.Forms.Cursors.Hand;
             this.res_buttom.Font = new System.Drawing.Font("Lucida Sans", 17.25F);
-            this.res_buttom.Location = new System.Drawing.Point(325, 256);
+            this.res_buttom.Location = new System.Drawing.Point(328, 303);
             this.res_buttom.Name = "res_buttom";
             this.res_buttom.Size = new System.Drawing.Size(149, 36);
             this.res_buttom.TabIndex = 10;
@@ -121,7 +122,7 @@ namespace ServisTest
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Lucida Sans", 17.25F);
-            this.button2.Location = new System.Drawing.Point(325, 202);
+            this.button2.Location = new System.Drawing.Point(328, 249);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 36);
             this.button2.TabIndex = 11;
@@ -162,7 +163,7 @@ namespace ServisTest
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dg_result.DefaultCellStyle = dataGridViewCellStyle3;
             this.dg_result.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
-            this.dg_result.Location = new System.Drawing.Point(12, 329);
+            this.dg_result.Location = new System.Drawing.Point(12, 364);
             this.dg_result.Name = "dg_result";
             this.dg_result.RowHeadersVisible = false;
             this.dg_result.Size = new System.Drawing.Size(488, 218);
@@ -174,7 +175,7 @@ namespace ServisTest
             this.test_dt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
             this.test_dt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.test_dt.Font = new System.Drawing.Font("Lucida Sans", 17.25F);
-            this.test_dt.Location = new System.Drawing.Point(175, 76);
+            this.test_dt.Location = new System.Drawing.Point(176, 103);
             this.test_dt.Name = "test_dt";
             this.test_dt.Size = new System.Drawing.Size(133, 67);
             this.test_dt.TabIndex = 13;
@@ -187,7 +188,7 @@ namespace ServisTest
             this.newtest_bt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
             this.newtest_bt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.newtest_bt.Font = new System.Drawing.Font("Lucida Sans", 17.25F);
-            this.newtest_bt.Location = new System.Drawing.Point(20, 76);
+            this.newtest_bt.Location = new System.Drawing.Point(21, 103);
             this.newtest_bt.Name = "newtest_bt";
             this.newtest_bt.Size = new System.Drawing.Size(133, 67);
             this.newtest_bt.TabIndex = 14;
@@ -195,12 +196,26 @@ namespace ServisTest
             this.newtest_bt.UseVisualStyleBackColor = false;
             this.newtest_bt.Click += new System.EventHandler(this.newtest_bt_Click);
             // 
+            // back
+            // 
+            this.back.AutoSize = true;
+            this.back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.back.Font = new System.Drawing.Font("OCR A Extended", 32.25F);
+            this.back.ForeColor = System.Drawing.Color.White;
+            this.back.Location = new System.Drawing.Point(4, -5);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(46, 45);
+            this.back.TabIndex = 15;
+            this.back.Text = "<";
+            this.back.Click += new System.EventHandler(this.back_Click);
+            // 
             // TeachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(88)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(512, 634);
+            this.Controls.Add(this.back);
             this.Controls.Add(this.newtest_bt);
             this.Controls.Add(this.test_dt);
             this.Controls.Add(this.dg_result);
@@ -234,5 +249,6 @@ namespace ServisTest
         private System.Windows.Forms.DataGridView dg_result;
         private System.Windows.Forms.Button test_dt;
         private System.Windows.Forms.Button newtest_bt;
+        private System.Windows.Forms.Label back;
     }
 }

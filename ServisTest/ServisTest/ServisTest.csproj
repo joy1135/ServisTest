@@ -99,6 +99,12 @@
   <ItemGroup>
     <Compile Include="Class\ConnectClass.cs" />
     <Compile Include="Class\Infoclass.cs" />
+    <Compile Include="CompletedTestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompletedTestsForm.Designer.cs">
+      <DependentUpon>CompletedTestsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateTests.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="TeachForm.Designer.cs">
       <DependentUpon>TeachForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CompletedTestsForm.resx">
+      <DependentUpon>CompletedTestsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateTests.resx">
       <DependentUpon>CreateTests.cs</DependentUpon>
     </EmbeddedResource>

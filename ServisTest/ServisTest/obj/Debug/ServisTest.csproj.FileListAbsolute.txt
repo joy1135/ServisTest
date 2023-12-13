@@ -92,3 +92,4 @@ C:\Users\Пользователь\Desktop\project\ServisTest\ServisTest\ServisTe
 C:\Users\Пользователь\Desktop\project\ServisTest\ServisTest\ServisTest\obj\Debug\ServisTest.csproj.CopyComplete
 C:\Users\Пользователь\Desktop\project\ServisTest\ServisTest\ServisTest\obj\Debug\ServisTest.exe
 C:\Users\Пользователь\Desktop\project\ServisTest\ServisTest\ServisTest\obj\Debug\ServisTest.pdb
+C:\Users\HOME\Desktop\project\ServisTest\ServisTest\obj\Debug\ServisTest.CompletedTestsForm.resources

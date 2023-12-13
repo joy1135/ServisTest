@@ -39,7 +39,7 @@ namespace ServisTest
         {
             InitializeComponent();
             string email = Infoclass.email;
-            string sql_fio = $"SELECT surname_t, name_t, patronymic_t FROM \"Teachers\" WHERE email_t = @email";
+            string sql_fio = $"SELECT surname, name, patronymic FROM \"Students\" WHERE email = @email";
             NpgsqlCommand cmd_select_fio = new NpgsqlCommand(sql_fio, conclass.vCon);
             cmd_select_fio.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
             namestud.Text = conclass.getfio(cmd_select_fio);
@@ -57,16 +57,46 @@ namespace ServisTest
             Application.Exit();
         }
 
-        private void dg_tests_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void back_Click(object sender, EventArgs e)
         {
-            if (e.ColumnIndex == 1)
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+        }
+
+        private void dg_tests_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == 1 & e.RowIndex > -1)
             {
-                Application.Exit();
+                name.Text = this.ActiveControl.Text;
+                if (name.Text != "")
+                {
+                    name.Visible = true;
+                    compl_buttom.Visible = true;
+                    name.Text = this.ActiveControl.Text;
+                    Test.nametest = this.ActiveControl.Text;
+                }
+                else
+                {
+                    name.Visible = false;
+                    compl_buttom.Visible = false;
+                }
             }
             else
             {
-                return; 
+                return;
             }
+        }
+
+        
+
+        private void compl_buttom_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CompletedTestsForm completedTestsForm = new CompletedTestsForm();
+            completedTestsForm.Show();
 
         }
     }

@@ -87,25 +87,25 @@ namespace ServisTest
             string email = logEmail.Text;
             string password = logPass.Text;
             Infoclass.email = logEmail.Text;
-            string sql_select_password = $"SELECT password_t FROM \"Teachers\" WHERE email_t = @email";
-            NpgsqlCommand cmd_select_password = new NpgsqlCommand(sql_select_password, conclass.vCon);
-            cmd_select_password.Parameters.Add("@password", NpgsqlTypes.NpgsqlDbType.Varchar).Value = password;
-            cmd_select_password.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
-            string check_password = conclass.getpassword(cmd_select_password);
-            if (check_password == "")
-            {
-                MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
-                return ;
-            }
             
-             bool pass = BCrypt.Net.BCrypt.Verify(password, check_password);
-           
-            
+       
             if (logTeach.Checked == true)
             {
+                string sql_select_password = $"SELECT password_t FROM \"Teachers\" WHERE email_t = @email";
+                NpgsqlCommand cmd_select_password = new NpgsqlCommand(sql_select_password, conclass.vCon);
+                cmd_select_password.Parameters.Add("@password", NpgsqlTypes.NpgsqlDbType.Varchar).Value = password;
+                cmd_select_password.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
+                string check_password = conclass.getpassword(cmd_select_password);
+                if (check_password == "")
+                {
+                    MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
+                    return;
+                }
+
+                bool pass = BCrypt.Net.BCrypt.Verify(password, check_password);
                 if (pass == true)
                 {
-                    
+                 
                     string sql_id = $"SELECT id_teacher FROM \"Teachers\" WHERE email_t = @email";
                     NpgsqlCommand cmd_id = new NpgsqlCommand(sql_id, conclass.vCon);
                     cmd_id.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
@@ -122,6 +122,18 @@ namespace ServisTest
             }
             if (logStud.Checked == true) 
             {
+                string sql_select_password = $"SELECT password FROM \"Students\" WHERE email = @email";
+                NpgsqlCommand cmd_select_password = new NpgsqlCommand(sql_select_password, conclass.vCon);
+                cmd_select_password.Parameters.Add("@password", NpgsqlTypes.NpgsqlDbType.Varchar).Value = password;
+                cmd_select_password.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
+                string check_password = conclass.getpassword(cmd_select_password);
+                if (check_password == "")
+                {
+                    MessageBox.Show("НЕПРАВИЛЬНЫЙ ЛОГИН ИЛИ ПАРОЛЬ");
+                    return;
+                }
+
+                bool pass = BCrypt.Net.BCrypt.Verify(password, check_password);
                 if (pass == true)
                 {
                     string sql_id = $"SELECT id_student FROM \"Students\" WHERE email = @email";

@@ -202,7 +202,9 @@ namespace ServisTest
                     {
                         cmd_insert.ExecuteReader();
                         MessageBox.Show("Регистрация прошла успешно");
-
+                        this.Hide();
+                        LoginForm loginForm = new LoginForm();
+                        loginForm.Show();
                     }
                     catch
                     {
@@ -217,7 +219,9 @@ namespace ServisTest
                     {
                         cmd_insert.ExecuteReader();
                         MessageBox.Show("Регистрация прошла успешно");
-                        
+                        this.Hide();
+                        LoginForm loginForm = new LoginForm();
+                        loginForm.Show();
                     }
                     catch
                     {
