@@ -68,6 +68,8 @@ namespace ServisTest
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudForm";
             this.Text = "StudForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StudForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StudForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 
