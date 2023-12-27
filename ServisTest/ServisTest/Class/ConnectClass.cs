@@ -65,10 +65,11 @@ namespace ServisTest.Class
                 while (dr.Read())
                 {
                     var a = dr.GetValue(0).ToString();
-                   
+                    vCon?.Close();
                     return a;
                 }
             }
+            vCon?.Close();
             return "";
             
         }
@@ -94,7 +95,9 @@ namespace ServisTest.Class
             return "";
 
         }
-
         
+
+
     }
+
 }

@@ -44,9 +44,9 @@ namespace ServisTest
             cmd_select_fio.Parameters.Add("@email", NpgsqlTypes.NpgsqlDbType.Varchar).Value = email;
             namestud.Text = conclass.getfio(cmd_select_fio);
             string id = Infoclass.id;
-            string sql_tests = $"Select t.id AS номер_теста, t.name AS название_теста, r.result AS результат FROM \"Tests\" AS t LEFT JOIN \"Results\" as r on r.id_test = t.id WHERE id_stud = @id OR id > 0 ORDER BY id";
+            string sql_tests = $"SELECT id AS номер_теста , name AS название_теста, (SELECT score FROM \"Results\" as r WHERE r.id_test=t.id AND id_stud = @id ) AS результаты FROM \"Tests\" as t ";
             NpgsqlCommand cmd_tests = new NpgsqlCommand(sql_tests, conclass.vCon);
-            cmd_tests.Parameters.Add("@name", NpgsqlTypes.NpgsqlDbType.Varchar).Value = id;
+            cmd_tests.Parameters.Add("@id", NpgsqlTypes.NpgsqlDbType.Bigint).Value = Convert.ToInt32(id);
             DataTable dt = conclass.getmultidata(cmd_tests);
             dg_tests.DataSource = dt;
         }
@@ -77,6 +77,7 @@ namespace ServisTest
                     compl_buttom.Visible = true;
                     name.Text = this.ActiveControl.Text;
                     Test.nametest = this.ActiveControl.Text;
+                    
                 }
                 else
                 {
@@ -94,10 +95,10 @@ namespace ServisTest
 
         private void compl_buttom_Click(object sender, EventArgs e)
         {
+            Test.i = 0;
             this.Hide();
             CompletedTestsForm completedTestsForm = new CompletedTestsForm();
             completedTestsForm.Show();
-
         }
     }
 }

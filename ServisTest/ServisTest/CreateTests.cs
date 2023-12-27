@@ -108,6 +108,8 @@ namespace ServisTest
                 correct3.Checked = false;
                 correct4.Checked = false;
                 add_question.Visible = true;
+                back.Visible = false;
+                exit.Visible = false;
             }
             else
             {

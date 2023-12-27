@@ -29,7 +29,6 @@ namespace ServisTest
         /// </summary>
         private void InitializeComponent()
         {
-            this.exit = new System.Windows.Forms.Label();
             this.nametest = new System.Windows.Forms.Label();
             this.add_question = new System.Windows.Forms.Button();
             this.correct4 = new System.Windows.Forms.RadioButton();
@@ -42,19 +41,6 @@ namespace ServisTest
             this.answer1 = new System.Windows.Forms.TextBox();
             this.question_tb = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // exit
-            // 
-            this.exit.AutoSize = true;
-            this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exit.Font = new System.Drawing.Font("OCR A Extended", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exit.ForeColor = System.Drawing.Color.Red;
-            this.exit.Location = new System.Drawing.Point(473, -5);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(46, 45);
-            this.exit.TabIndex = 4;
-            this.exit.Text = "X";
-            this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // nametest
             // 
@@ -72,12 +58,13 @@ namespace ServisTest
             this.add_question.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(225)))));
             this.add_question.Cursor = System.Windows.Forms.Cursors.Hand;
             this.add_question.Font = new System.Drawing.Font("Lucida Sans", 17.25F);
-            this.add_question.Location = new System.Drawing.Point(206, 537);
+            this.add_question.Location = new System.Drawing.Point(191, 537);
             this.add_question.Name = "add_question";
             this.add_question.Size = new System.Drawing.Size(147, 63);
             this.add_question.TabIndex = 33;
             this.add_question.Text = "ДАЛЕЕ";
             this.add_question.UseVisualStyleBackColor = false;
+            this.add_question.Click += new System.EventHandler(this.add_question_Click);
             // 
             // correct4
             // 
@@ -127,7 +114,7 @@ namespace ServisTest
             this.answer4.Name = "answer4";
             this.answer4.ReadOnly = true;
             this.answer4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.answer4.Size = new System.Drawing.Size(332, 40);
+            this.answer4.Size = new System.Drawing.Size(363, 40);
             this.answer4.TabIndex = 28;
             // 
             // answer3
@@ -138,7 +125,7 @@ namespace ServisTest
             this.answer3.Name = "answer3";
             this.answer3.ReadOnly = true;
             this.answer3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.answer3.Size = new System.Drawing.Size(332, 40);
+            this.answer3.Size = new System.Drawing.Size(363, 40);
             this.answer3.TabIndex = 27;
             // 
             // answer2
@@ -149,7 +136,7 @@ namespace ServisTest
             this.answer2.Name = "answer2";
             this.answer2.ReadOnly = true;
             this.answer2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.answer2.Size = new System.Drawing.Size(332, 40);
+            this.answer2.Size = new System.Drawing.Size(363, 40);
             this.answer2.TabIndex = 26;
             // 
             // answer1
@@ -160,7 +147,7 @@ namespace ServisTest
             this.answer1.Name = "answer1";
             this.answer1.ReadOnly = true;
             this.answer1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.answer1.Size = new System.Drawing.Size(332, 40);
+            this.answer1.Size = new System.Drawing.Size(363, 40);
             this.answer1.TabIndex = 25;
             // 
             // question_tb
@@ -192,7 +179,6 @@ namespace ServisTest
             this.Controls.Add(this.answer1);
             this.Controls.Add(this.question_tb);
             this.Controls.Add(this.nametest);
-            this.Controls.Add(this.exit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CompletedTestsForm";
             this.Text = "CompletedTestsForm";
@@ -204,8 +190,6 @@ namespace ServisTest
         }
 
         #endregion
-
-        private System.Windows.Forms.Label exit;
         private System.Windows.Forms.Label nametest;
         private System.Windows.Forms.Button add_question;
         private System.Windows.Forms.RadioButton correct4;
